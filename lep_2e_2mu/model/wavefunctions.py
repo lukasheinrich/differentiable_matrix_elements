@@ -1,7 +1,6 @@
 from __future__ import division
 from __future__ import division 
-import math
-from math import sqrt, pow
+from monkey_patch import sqrt, pow, complex, max
 from itertools import product
 
 class WaveFunction(list):
@@ -27,8 +26,8 @@ def ixxxxx(p,fmass,nhel,nsf):
     
     fi = WaveFunction(2)
     
-    fi[0] = complex(-p[0]*nsf,-p[3]*nsf)
-    fi[1] = complex(-p[1]*nsf,-p[2]*nsf) 
+    fi[0] = complex(-1.0*p[0]*nsf,-1.0*p[3]*nsf)
+    fi[1] = complex(-1.0*p[1]*nsf,-1.0*p[2]*nsf) 
     nh = nhel*nsf 
     if (fmass != 0.):
         pp = min(p[0],sqrt(p[1]**2 + p[2]**2 + p[3]**2 ))
@@ -378,8 +377,8 @@ def irxxxx(p, mass, nhel, nsr):
     pt = min([pp,sqrt(pt2)])
     
     rc = {}
-    rc[(4,0)] = -1*complex(p[0],p[3])*nsr
-    rc[(5,0)] = -1*complex(p[1],p[2])*nsr
+    rc[(4,0)] = -1.0*complex(p[0],p[3])*nsr
+    rc[(5,0)] = -1.0*complex(p[1],p[2])*nsr
     
 
     nsv = -nsr # nsv=+1 for final, -1 for initial   

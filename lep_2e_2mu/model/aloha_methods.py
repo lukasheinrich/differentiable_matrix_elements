@@ -1,13 +1,13 @@
 from __future__ import division
 import wavefunctions
-import cmath
+from monkey_patch import complex
 
 def FFV2_3(F1,F2,COUP,M3,W3):
     OM3 = 0.0
     if (M3): OM3=1.0/M3**2
     V3 = wavefunctions.WaveFunction(size=6)
-    V3[0] = +F1[0]+F2[0]
-    V3[1] = +F1[1]+F2[1]
+    V3[0] =F1[0]+F2[0]
+    V3[1] =F1[1]+F2[1]
     P3 = [-complex(V3[0]).real, -complex(V3[1]).real, -complex(V3[1]).imag, -complex(V3[0]).imag]
     TMP1 = (F1[2]*(F2[4]*(P3[0]+P3[3])+F2[5]*(P3[1]+1j*(P3[2])))+F1[3]*(F2[4]*(P3[1]-1j*(P3[2]))+F2[5]*(P3[0]-P3[3])))
     denom = COUP/(P3[0]**2-P3[1]**2-P3[2]**2-P3[3]**2 - M3 * (M3 -1j* W3))
@@ -28,8 +28,8 @@ def FFV2_4_3(F1,F2,COUP1,COUP2,M3,W3):
 
 def FFV1P0_3(F1,F2,COUP,M3,W3):
     V3 = wavefunctions.WaveFunction(size=6)
-    V3[0] = +F1[0]+F2[0]
-    V3[1] = +F1[1]+F2[1]
+    V3[0] =F1[0]+F2[0]
+    V3[1] =F1[1]+F2[1]
     P3 = [-complex(V3[0]).real, -complex(V3[1]).real, -complex(V3[1]).imag, -complex(V3[0]).imag]
     denom = COUP/(P3[0]**2-P3[1]**2-P3[2]**2-P3[3]**2 - M3 * (M3 -1j* W3))
     V3[2]= denom*(-1j)*(F1[2]*F2[4]+F1[3]*F2[5]+F1[4]*F2[2]+F1[5]*F2[3])
@@ -72,8 +72,8 @@ def FFV4_3(F1,F2,COUP,M3,W3):
     OM3 = 0.0
     if (M3): OM3=1.0/M3**2
     V3 = wavefunctions.WaveFunction(size=6)
-    V3[0] = +F1[0]+F2[0]
-    V3[1] = +F1[1]+F2[1]
+    V3[0] =F1[0]+F2[0]
+    V3[1] =F1[1]+F2[1]
     P3 = [-complex(V3[0]).real, -complex(V3[1]).real, -complex(V3[1]).imag, -complex(V3[0]).imag]
     TMP4 = (F1[4]*(F2[2]*(P3[0]-P3[3])-F2[3]*(P3[1]+1j*(P3[2])))+F1[5]*(F2[2]*(+1j*(P3[2])-P3[1])+F2[3]*(P3[0]+P3[3])))
     TMP1 = (F1[2]*(F2[4]*(P3[0]+P3[3])+F2[5]*(P3[1]+1j*(P3[2])))+F1[3]*(F2[4]*(P3[1]-1j*(P3[2]))+F2[5]*(P3[0]-P3[3])))

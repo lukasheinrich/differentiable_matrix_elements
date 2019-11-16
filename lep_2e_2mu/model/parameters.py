@@ -2,7 +2,8 @@
 #  By the MadGraph5_aMC@NLO Development Team
 #  Visit launchpad.net/madgraph5 and amcatnlo.web.cern.ch
 
-import cmath
+import monkey_patch as cmath
+from monkey_patch import complex
 
 class ParamCard(object):
     """ Accessor for a SLHA param card.dat."""

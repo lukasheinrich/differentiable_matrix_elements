@@ -93,8 +93,8 @@ class Matrix_1_epem_mupmum(object):
         #  
         # Color matrix
         #  
-        denom = [1];
-        cf = [[1]];
+        denom = [1.];
+        cf = [[1.]];
         #
         # Model parameters
         #
@@ -120,6 +120,7 @@ class Matrix_1_epem_mupmum(object):
         amp[1]= FFV2_4_0(w[2],w[3],w[4],-GC_51,GC_59)
 
         jamp = [None] * ncolor
+
 
         jamp[0] = -amp[0]-amp[1]
 
